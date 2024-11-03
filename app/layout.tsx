@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Display} from "next/font/google";
 
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { ClerkProvider, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 //import localFont from "next/font/local";
 import "./globals.css";
 
@@ -38,7 +38,7 @@ export default function RootLayout({
             <SignInButton />
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            {/*<UserButton />*/}
           </SignedIn>
         {children}
       </body>
