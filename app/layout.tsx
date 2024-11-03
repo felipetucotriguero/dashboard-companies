@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Display} from "next/font/google";
+import { Noto_Sans_Display } from "next/font/google";
 
 import { ClerkProvider, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 //import localFont from "next/font/local";
+
+import { ThemeProvider } from "@/components/theme-provider"
+
 import "./globals.css";
 
 /*const geistSans = localFont({
@@ -16,7 +19,7 @@ const geistMono = localFont({
   weight: "100 900",
 });*/
 
-const noto = Noto_Sans_Display({ subsets: ["latin"]});
+const noto = Noto_Sans_Display({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Compañia Dashboard | FelipeDev",
@@ -30,19 +33,26 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body
-        className={`${noto.className} ${noto.className} antialiased`}
-      >
-         <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            {/*<UserButton />*/}
-          </SignedIn>
-        {children}
-      </body>
-    </html>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${noto.className} ${noto.className} antialiased`}
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              {/*<UserButton />*/}
+            </SignedIn>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

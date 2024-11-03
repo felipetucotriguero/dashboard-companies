@@ -1,8 +1,11 @@
+import { Menu, Search } from "lucide-react"
+import { UserButton } from "@clerk/nextjs"
+
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { UserButton } from "@clerk/nextjs"
-import { Menu, Search } from "lucide-react"
-import { SidebarRoutes } from "../SidebarRoutes"
+import { ToggleTheme } from "../ToggleTheme"
+
+import { SidebarRoutes } from "@/components/SidebarRoutes"
 
 export function Navbar() {
   return (
@@ -22,7 +25,7 @@ export function Navbar() {
             <Search strokeWidth={1} className="absolute top-2 right-2"/>
         </div>
         <div className="flex gap-x-2 items-center">
-            <p>ToogleTheme</p>
+            <ToggleTheme />
             <UserButton/>
         </div>
     </div>
